@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маска файлу</title>
+    <style>
+        body{font-family: Verdana, Geneva, Tahoma, sans-serif;}
+    </style>
+</head>
+<body>
+    <h1>Введіть назву зображення</h1>
+    <form id = "form">
+        <input type = "text" id = "name" placeholder = "Введіть назву зображення" required>
+        <button type = "submit">Перевірити</button>
+    </form>
+    <p id = "mes"></p>
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const mes = document.getElementById("mes");
+            const reg = /^[a-zA-Z]\w*\.(png|jpg|gif)$/;
+            if(reg.test(name)){
+                mes.textContent = "Ім'я файлу задовольняє вимоги";
+            }
+            else{
+                mes.textContent = "Помилка введення назви. Ім'я файлу повинно починатись з літери,може містити цифри, знаки підкреслення, а також в кінці мати назву одного з розширень png, jpg, gif"
+            }
+        });
+    </script>
+</body>
+</html>
